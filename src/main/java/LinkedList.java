@@ -27,21 +27,27 @@ public class LinkedList<E> implements List<E> {
     private class LinkedListIterator implements Iterator<E> {
 
         private Node<E> current = head;
+        int currentIndex = 0;
 
         public boolean hasNext() {
             return (current.next != head);
         }
 
         public E next() {
-
             if (!hasNext()) {
                 throw new NoSuchElementException();
             }
-
+            
             current = current.next;
-
+            
+            currentIndex++;
             return current.value;
         }
+
+		@Override
+		public int nextIndex() {
+			return currentIndex;
+		}
     }
 
     public Iterator<E> iterator() {
@@ -94,5 +100,15 @@ public class LinkedList<E> implements List<E> {
 
         size++;
     }
+
+	@Override
+	public Iterator<E> iterator(int nexIndex) {
+		return null;
+	}
+
+	@Override
+	public Iterator<E> iterator(Iterator<E> other) {
+		return null;
+	}
     
 }

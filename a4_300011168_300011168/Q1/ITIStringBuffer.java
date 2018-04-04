@@ -28,7 +28,7 @@ public class ITIStringBuffer {
     public ITIStringBuffer(String firstString){
         buffer = new SinglyLinkedList<>();
         buffer.add(firstString);
-        length = 0;
+        length = firstString.length();
     }
 
     /**
