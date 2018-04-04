@@ -14,7 +14,7 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
 
         Node<E> start = findElem(fromElement);
         
-        return countRecurse(start, toElement) + 1; // Just a plus one beucase we need to include the starting node
+        return countRecurse(start, toElement); // Just a plus one beucase we need to include the starting node
     }
 
     /**
@@ -28,8 +28,10 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
     private int countRecurse(Node<E> start, E end){
 
         // Base case (also handles edge cases where fromElement and toElement aren't found in the list)
-        if(start == null || start.value.equals(end)){
+        if(start == null){
             return 0;
+        }else if(start.value.equals(end)){
+            return 1;
         }
 
         return countRecurse(start.next, end) + 1;
