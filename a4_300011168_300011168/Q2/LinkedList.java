@@ -103,12 +103,23 @@ public class LinkedList<E> implements List<E> {
 
 	@Override
 	public Iterator<E> iterator(int nexIndex) {
-		return null;
+
+        if(nexIndex >= this.size){
+            throw new IndexOutOfBoundsException("The index of the iterator must be less than the size of the linked list");
+        }
+
+        Iterator<E> iter = new LinkedListIterator();
+        
+        while(iter.nextIndex() < nexIndex){
+            iter.next();
+        }
+
+        return iter;
 	}
 
 	@Override
 	public Iterator<E> iterator(Iterator<E> other) {
-		return null;
+		return iterator(other.nextIndex());
 	}
     
 }
