@@ -2,8 +2,51 @@ import java.util.*;
 
 public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
 
+    /**
+     * Counts the number of values between two elements in the linked list
+     * 
+     * @param fromElement - The element that we start counting from
+     * @param toElement - The element that we stop counting at
+     * 
+     * @return - The number of elements between fromElement and toElement
+     */
     public int count(E fromElement, E toElement) {
-        throw new UnsupportedOperationException("replace with your implementation");
+
+        Node<E> start = findElem(fromElement);
+        
+        return countRecurse(start, toElement) + 1; // Just a plus one beucase we need to include the starting node
+    }
+
+    /**
+     * A private method to do the heavy lifting for count
+     * 
+     * @param start - The node where we start counting from
+     * @param end - The value that we need to stop on
+     * 
+     * @return - The number of elements between start and end
+     */
+    private int countRecurse(Node<E> start, E end){
+
+        // Base case (also handles edge cases where fromElement and toElement aren't found in the list)
+        if(start == null || start.value.equals(end)){
+            return 0;
+        }
+
+        return countRecurse(start.next, end) + 1;
+    }
+
+    /**
+     * Finds the node for a given elem in the linked list
+     */
+    private Node<E> findElem(E elem){
+        Node<E> cur = this.head;
+        while(cur.next != null){
+            if(cur.value == elem){
+                return cur;
+            }
+            cur = cur.next;
+        }
+        return null;
     }
 
     private static class Node<T> {

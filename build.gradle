@@ -26,4 +26,4 @@ run {
     standardInput = System.in
 }
 
-mainClassName = 'Q2'
+mainClassName = 'Q3'
