@@ -24,15 +24,18 @@ public class ITIStringBuffer {
 
     /**
      * Creates a new string buffer with a starting string
+     * 
+     * @param firstString - The starting string to be added to the buffer
      */
     public ITIStringBuffer(String firstString){
         buffer = new SinglyLinkedList<>();
-        buffer.add(firstString);
-        length = firstString.length();
+        append(firstString);
     }
 
     /**
      * Concats a new string in the buffer
+     * 
+     * @param nextString - The string to add to the buffer
      */
     public void append(String nextString){
         buffer.add(nextString);
@@ -47,6 +50,10 @@ public class ITIStringBuffer {
 
         int cp = 0; // No that doesn't mean what urban dictonary says it does
 
+        if(buffer.size() == 1){
+            return buffer.get(0);
+        }
+
         for(Iterator<String> a = buffer.iterator(); a.hasNext(); ){
             char[] data = a.next().toCharArray();
             buffer.removeFirst();
@@ -56,6 +63,7 @@ public class ITIStringBuffer {
             }
         }
 
+        buffer.add(new String(outp));
         return new String(outp);
     }
 
