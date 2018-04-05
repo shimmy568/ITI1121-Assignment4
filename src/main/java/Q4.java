@@ -17,6 +17,6 @@ public class Q4 {
         bTree.add(9);
         bTree.add(7);
 
-        System.out.println(bTree.count(3,6));
+        System.out.println(bTree.count(2,8));
     }
 }
